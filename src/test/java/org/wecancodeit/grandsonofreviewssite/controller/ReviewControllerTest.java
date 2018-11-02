@@ -56,26 +56,5 @@ public class ReviewControllerTest {
 	public void shouldReturnCategoriesTemplateWhenAccessingCategories() throws Exception {
 		mockMvc.perform(get("/categories")).andExpect(view().name("categories"));
 	}
-	/*
-	 * 
-	 * @Test public void shouldBeOkWhenAccessingRewiew() throws Exception {
-	 * when(reviewRepo.findById(9L).get()).thenReturn(reviewOne);
-	 * mockMvc.perform(get("/reviews/9")).andExpect(status().isOk()); }
-	 * 
-	 * @Test public void shouldBeOkWhenAccessingCategory() throws Exception {
-	 * when(categoryRepo.findById(1L).get()).thenReturn(categoryOne);
-	 * mockMvc.perform(get("/categories/1")).andExpect(status().isOk()); }
-	 * 
-	 * @Test
-	 * 
-	 * public void shouldReturReviewTemplateWhenAccessingReview() throws Exception {
-	 * when(reviewRepo.findById(6L).get()).thenReturn(reviewOne);
-	 * mockMvc.perform(get("/reviews/6")).andExpect(view().name("review")); }
-	 * 
-	 * @Test
-	 * 
-	 * public void shouldReturCateogryTemplateWhenAccessingCategory() throws
-	 * Exception { when(categoryRepo.findById(1L).get()).thenReturn(categoryOne);
-	 * mockMvc.perform(get("/categories/1")).andExpect(view().name("category")); }
-	 */
+
 }

@@ -46,6 +46,13 @@
 		<button class="tagSubmit">Submit</button>
 	</p>
 	
+	<ul>
+		<li th:each="tag : ${review.tags}">
+		
+			<h2 th:text="${tag.tagName}"></h2>
+		</li>
+	</ul>
+	
 	<script src="/js/app.js"></script>
 	</main>
 

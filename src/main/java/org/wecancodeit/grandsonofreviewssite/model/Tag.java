@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 @Entity
@@ -16,7 +17,8 @@ public class Tag {
 	private Long id;
 	private String tagName;
 
-	@ManyToMany(mappedBy = "tags")
+	@JoinTable
+	@ManyToMany
 	private List<Review> reviews = new ArrayList<Review>();
 
 	public Tag() {

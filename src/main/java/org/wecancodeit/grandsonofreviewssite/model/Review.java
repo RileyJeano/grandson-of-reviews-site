@@ -28,6 +28,7 @@ public class Review {
 	@ManyToOne
 	private Category category;
 
+	@JoinTable
 	@ManyToMany
 	private Collection<Tag> tags;
 
