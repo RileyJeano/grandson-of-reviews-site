@@ -1,4 +1,4 @@
-package org.wecancodeit.sonofreviewssite.controller;
+package org.wecancodeit.grandsonofreviewssite.controller;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -13,10 +13,11 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.wecancodeit.sonofreviewssite.model.Category;
-import org.wecancodeit.sonofreviewssite.model.Review;
-import org.wecancodeit.sonofreviewssite.repository.CategoryRepository;
-import org.wecancodeit.sonofreviewssite.repository.ReviewRepository;
+import org.wecancodeit.grandsonofreviewssite.controller.ReviewController;
+import org.wecancodeit.grandsonofreviewssite.model.Category;
+import org.wecancodeit.grandsonofreviewssite.model.Review;
+import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
+import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(ReviewController.class)

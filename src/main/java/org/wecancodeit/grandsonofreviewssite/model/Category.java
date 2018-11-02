@@ -1,4 +1,4 @@
-package org.wecancodeit.sonofreviewssite.model;
+package org.wecancodeit.grandsonofreviewssite.model;
 
 import java.util.Collection;
 

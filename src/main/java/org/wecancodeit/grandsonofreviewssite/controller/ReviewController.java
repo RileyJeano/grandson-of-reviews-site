@@ -1,4 +1,4 @@
-package org.wecancodeit.sonofreviewssite.controller;
+package org.wecancodeit.grandsonofreviewssite.controller;
 
 import javax.annotation.Resource;
 
@@ -6,8 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.wecancodeit.sonofreviewssite.repository.CategoryRepository;
-import org.wecancodeit.sonofreviewssite.repository.ReviewRepository;
+import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
+import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 
 @Controller
 public class ReviewController {

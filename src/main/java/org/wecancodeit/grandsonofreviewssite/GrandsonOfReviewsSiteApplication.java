@@ -1,13 +1,13 @@
-package org.wecancodeit.sonofreviewssite;
+package org.wecancodeit.grandsonofreviewssite;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SonOfReviewsSiteApplication {
+public class GrandsonOfReviewsSiteApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SonOfReviewsSiteApplication.class, args);
+		SpringApplication.run(GrandsonOfReviewsSiteApplication.class, args);
 		System.out.println("Your server is running, you better catch it!");
 	}
 }

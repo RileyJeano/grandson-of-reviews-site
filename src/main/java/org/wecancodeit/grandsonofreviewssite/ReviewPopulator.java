@@ -1,12 +1,12 @@
-package org.wecancodeit.sonofreviewssite;
+package org.wecancodeit.grandsonofreviewssite;
 
 import javax.annotation.Resource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
-import org.wecancodeit.sonofreviewssite.model.Category;
-import org.wecancodeit.sonofreviewssite.model.Review;
-import org.wecancodeit.sonofreviewssite.repository.CategoryRepository;
-import org.wecancodeit.sonofreviewssite.repository.ReviewRepository;
+import org.wecancodeit.grandsonofreviewssite.model.Category;
+import org.wecancodeit.grandsonofreviewssite.model.Review;
+import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
+import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 
 @Service
 public class ReviewPopulator implements CommandLineRunner {
