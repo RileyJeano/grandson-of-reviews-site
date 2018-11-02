@@ -1,10 +1,13 @@
 package org.wecancodeit.grandsonofreviewssite;
 
+import java.util.ArrayList;
+
 import javax.annotation.Resource;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Service;
 import org.wecancodeit.grandsonofreviewssite.model.Category;
 import org.wecancodeit.grandsonofreviewssite.model.Review;
+import org.wecancodeit.grandsonofreviewssite.model.Tag;
 import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 
@@ -26,6 +29,7 @@ public class ReviewPopulator implements CommandLineRunner {
 		Category category4 = new Category("Hobbies");
 		Category category5 = new Category("Worst Dad Jokes");
 
+		Tag tag1 = new Tag("Lizzy");
 		category1 = categoryRepo.save(category1);
 		category2 = categoryRepo.save(category2);
 		category3 = categoryRepo.save(category3);
