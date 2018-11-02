@@ -2,11 +2,15 @@ package org.wecancodeit.grandsonofreviewssite.controller;
 
 import javax.annotation.Resource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.wecancodeit.grandsonofreviewssite.model.Comment;
 import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
+import org.wecancodeit.grandsonofreviewssite.repository.PostRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 
 @Controller
@@ -17,6 +21,9 @@ public class ReviewController {
 
 	@Resource
 	ReviewRepository reviewRepo;
+
+	@Autowired
+	PostRepository postRepo;
 
 	@RequestMapping("categories")
 	public String listCourses(Model model) {
@@ -44,4 +51,11 @@ public class ReviewController {
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "review";
 	}
+
+	@PostMapping("/reviews/{id}")
+	public String addComment(String username, String content, Model model) {
+		postRepo.save(new Comment(username, content));
+		return "redirect:/categories/5";
+	}
+
 }

@@ -1,10 +1,14 @@
 package org.wecancodeit.grandsonofreviewssite.model;
 
+import java.util.Collection;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 import javax.persistence.Lob;
 
 @Entity
@@ -21,6 +25,9 @@ public class Review {
 
 	@ManyToOne
 	private Category category;
+
+	@OneToMany(mappedBy = "Review")
+	private Collection<Comment> comments;
 
 	public Review() {
 	}
