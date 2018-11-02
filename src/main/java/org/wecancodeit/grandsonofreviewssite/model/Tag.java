@@ -26,12 +26,21 @@ public class Tag {
 		this.tagName = tagName;
 	}
 
+	public Tag(String tagName, Review review) {
+		this.tagName = tagName;
+		addReview(review);
+	}
+
 	public Long getId() {
 		return id;
 	}
 
 	public String getTagName() {
 		return tagName;
+	}
+
+	public void addReview(Review review) {
+		reviews.add(review);
 	}
 
 	public List<Review> getReviews() {

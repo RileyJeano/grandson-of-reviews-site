@@ -36,8 +36,8 @@ public class ApiController {
 		JSONObject json = new JSONObject(body);
 		String tagName = json.getString("tagName");
 		System.out.println(tagName);
-		Tag tag = new Tag(tagName);
-		reviewRepo.findById(id);
+		System.out.println(id);
+		Tag tag = new Tag(tagName, reviewRepo.findById(id).get());
 		tagRepo.save(tag);
 
 		return null;
