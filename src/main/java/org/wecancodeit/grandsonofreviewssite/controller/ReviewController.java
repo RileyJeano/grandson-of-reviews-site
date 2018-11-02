@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.grandsonofreviewssite.model.Category;
 import org.wecancodeit.grandsonofreviewssite.model.Comment;
@@ -72,4 +73,5 @@ public class ReviewController {
 		tagRepo.save(tag);
 		return "redirect:/reviews/{id}";
 	}
+
 }
