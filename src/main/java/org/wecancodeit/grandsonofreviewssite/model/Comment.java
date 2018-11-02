@@ -16,6 +16,22 @@ public class Comment {
 	private String username;
 	private String content;
 
+	public Long getId() {
+		return id;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public String getContent() {
+		return content;
+	}
+
+	public Review getReview() {
+		return review;
+	}
+
 	@JsonIgnore
 	@ManyToOne
 	private Review review;
@@ -24,17 +40,10 @@ public class Comment {
 
 	}
 
-	public Comment(String username, String content) {
+	public Comment(String username, String content, Review review) {
 		this.username = username;
 		this.content = content;
-	}
-
-	private String getUsername() {
-		return username;
-	}
-
-	private String getContent() {
-		return content;
+		this.review = review;
 	}
 
 }

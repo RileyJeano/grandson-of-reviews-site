@@ -27,11 +27,20 @@
 			<p th:text="${review.recomendation}"></p>
 		</div>
 		
-		<form action="/reviews/${id}" method="post">
+		<form th:action="|/reviews/${review.id}|" method="post">
 		<label>Username: <input type="text" name="username" /></label>
 		<textarea name="content" placeholder="Leave a comment"></textarea>
 		<input type="submit" value="Submit" />
 	</form>
+
+	<ul>
+		<li th:each="comment : ${review.comments}">
+		
+			<h2 th:text="${comment.username}"></h2>
+			<h3 th:text="${comment.content}"></h3>
+		</li>
+	</ul>
+
 
 	</main>
 
