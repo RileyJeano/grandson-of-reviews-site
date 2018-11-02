@@ -1,5 +1,8 @@
 package org.wecancodeit.grandsonofreviewssite.repository;
 
-public interface TagRepository {
+import org.springframework.data.repository.CrudRepository;
+import org.wecancodeit.grandsonofreviewssite.model.Tag;
+
+public interface TagRepository extends CrudRepository<Tag, Long> {
 
 }

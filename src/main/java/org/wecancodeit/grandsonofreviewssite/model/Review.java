@@ -1,11 +1,8 @@
 package org.wecancodeit.grandsonofreviewssite.model;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
-=======
 import java.util.Collection;
->>>>>>> upstream/master
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,13 +30,11 @@ public class Review {
 	@ManyToOne
 	private Category category;
 
-
 	@ManyToMany
-	private List<Tag> tags = new ArrayList<Tag>();
+	private Collection<Tag> tags;
 
-	@OneToMany(mappedBy = "Review")
+	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
-
 
 	public Review() {
 	}
@@ -93,7 +88,11 @@ public class Review {
 		return category;
 	}
 
-	public List<Tag> getTags() {
+	public void addTag(Tag tag) {
+		tags.add(tag);
+	}
+
+	public Collection<Tag> getTags() {
 		return tags;
 	}
 
