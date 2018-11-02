@@ -9,8 +9,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import javax.persistence.Lob;
-
 @Entity
 public class Review {
 	@Id
@@ -26,8 +24,12 @@ public class Review {
 	@ManyToOne
 	private Category category;
 
-	@OneToMany(mappedBy = "Review")
+	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
+
+	public Collection<Comment> getComments() {
+		return comments;
+	}
 
 	public Review() {
 	}

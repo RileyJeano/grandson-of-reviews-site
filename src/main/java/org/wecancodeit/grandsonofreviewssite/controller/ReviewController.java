@@ -53,9 +53,9 @@ public class ReviewController {
 	}
 
 	@PostMapping("/reviews/{id}")
-	public String addComment(String username, String content, Model model) {
-		postRepo.save(new Comment(username, content));
-		return "redirect:/categories/5";
+	public String addComment(@PathVariable(value = "id") Long id, String username, String content, Model model) {
+		postRepo.save(new Comment(username, content, reviewRepo.findById(id).get()));
+		return "redirect:/reviews/{id}";
 	}
 
 }
