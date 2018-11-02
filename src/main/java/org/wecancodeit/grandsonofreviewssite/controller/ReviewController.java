@@ -3,15 +3,19 @@ package org.wecancodeit.grandsonofreviewssite.controller;
 import javax.annotation.Resource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.wecancodeit.grandsonofreviewssite.model.Category;
 import org.wecancodeit.grandsonofreviewssite.model.Comment;
+import org.wecancodeit.grandsonofreviewssite.model.Tag;
 import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.PostRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
+import org.wecancodeit.grandsonofreviewssite.repository.TagRepository;
 
 @Controller
 public class ReviewController {
@@ -24,6 +28,9 @@ public class ReviewController {
 
 	@Autowired
 	PostRepository postRepo;
+
+	@Autowired
+	TagRepository tagRepo;
 
 	@RequestMapping("categories")
 	public String listCourses(Model model) {
@@ -58,4 +65,11 @@ public class ReviewController {
 		return "redirect:/reviews/{id}";
 	}
 
+	@PostMapping("/reviews/{id}/tag")
+	public String addTag(@PathVariable(value = "id") Long id, String tagName, Model model) {
+		Tag tag = new Tag(tagName);
+		reviewRepo.findById(id).get().addTag(tag);
+		tagRepo.save(tag);
+		return "redirect:/reviews/{id}";
+	}
 }
