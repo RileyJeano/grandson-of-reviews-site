@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.wecancodeit.grandsonofreviewssite.model.Category;
 import org.wecancodeit.grandsonofreviewssite.model.Comment;
+import org.wecancodeit.grandsonofreviewssite.model.Review;
 import org.wecancodeit.grandsonofreviewssite.model.Tag;
 import org.wecancodeit.grandsonofreviewssite.repository.CategoryRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.PostRepository;
@@ -58,6 +59,17 @@ public class ReviewController {
 		model.addAttribute("review", reviewRepo.findById(id).get());
 		model.addAttribute("categories", categoryRepo.findAll());
 		return "review";
+	}
+
+	@RequestMapping("/tag/{id}")
+	public String getTag(@PathVariable(value = "id") Long id, Model model) {
+		model.addAttribute("tag", tagRepo.findById(id).get());
+		System.out.println(tagRepo.findById(id).get().getReviews());
+		for (Review review : tagRepo.findById(id).get().getReviews()) {
+			System.out.println("The name is " + review.getReviewName());
+		}
+		;
+		return "tag";
 	}
 
 	@PostMapping("/reviews/{id}")

@@ -14,7 +14,7 @@ addTagButton.addEventListener('click', () => {
 			p.innerHTML = original;
 			JSON.parse(this.responseText).forEach(tag =>{
 				p.innerHTML = `
-					<span>${tag.tagName}</span> 
+					<a href = "/tag/${tag.id}">${tag.tagName}</a> 
 				` + p.innerHTML;
 			})
 		}
