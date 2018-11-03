@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.wecancodeit.grandsonofreviewssite.model.Review;
 import org.wecancodeit.grandsonofreviewssite.model.Tag;
 import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.TagRepository;
@@ -31,15 +32,17 @@ public class ApiController {
 	}
 
 	@PostMapping("/api/reviews/{id}/tags/add")
-	public String addTag(@PathVariable(value = "id") Long id, @RequestBody String body) throws JSONException {
+	public Collection<Tag> addTag(@PathVariable(value = "id") Long id, @RequestBody String body) throws JSONException {
 		System.out.println(body);
 		JSONObject json = new JSONObject(body);
 		String tagName = json.getString("tagName");
 		System.out.println(tagName);
 		System.out.println(id);
-		Tag tag = new Tag(tagName, reviewRepo.findById(id).get());
+		Review review = reviewRepo.findById(id).get();
+		Tag tag = new Tag(tagName, review);
+		review.addTag(tag);
 		tagRepo.save(tag);
-
-		return null;
+		System.out.println(review.getTags());
+		return review.getTags();
 	}
 }

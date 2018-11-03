@@ -9,5 +9,5 @@ addTagButton.addEventListener('click', () => {
 		}),
 	})
 		.then(res => res.json())
-		.then(data => console.log)
+		.then(data => console.log(data))
 })

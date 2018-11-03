@@ -9,6 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Tag {
 
@@ -17,6 +19,7 @@ public class Tag {
 	private Long id;
 	private String tagName;
 
+	@JsonIgnore
 	@JoinTable
 	@ManyToMany
 	private List<Review> reviews = new ArrayList<Review>();
