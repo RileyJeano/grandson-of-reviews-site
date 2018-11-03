@@ -1,7 +1,9 @@
 package org.wecancodeit.grandsonofreviewssite.model;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,7 +23,7 @@ public class Tag {
 
 	@JsonIgnore
 	@ManyToMany
-	private List<Review> reviews = new ArrayList<Review>();
+	private Set<Review> reviews = new HashSet<>();
 
 	public Tag() {
 	}
@@ -47,7 +49,7 @@ public class Tag {
 		reviews.add(review);
 	}
 
-	public List<Review> getReviews() {
+	public Set<Review> getReviews() {
 		return reviews;
 	}
 
