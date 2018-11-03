@@ -20,7 +20,6 @@ public class Tag {
 	private String tagName;
 
 	@JsonIgnore
-	@JoinTable
 	@ManyToMany
 	private List<Review> reviews = new ArrayList<Review>();
 

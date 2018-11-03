@@ -43,6 +43,7 @@ public class ApiController {
 		review.addTag(tag);
 		tagRepo.save(tag);
 		System.out.println(review.getTags());
+
 		return review.getTags();
 	}
 }
