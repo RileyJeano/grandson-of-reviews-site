@@ -63,6 +63,7 @@ public class ReviewController {
 
 	@RequestMapping("/tag/{id}")
 	public String getTag(@PathVariable(value = "id") Long id, Model model) {
+		model.addAttribute("categories", categoryRepo.findAll());
 		model.addAttribute("tag", tagRepo.findById(id).get());
 		System.out.println(tagRepo.findById(id).get().getReviews());
 		for (Review review : tagRepo.findById(id).get().getReviews()) {
