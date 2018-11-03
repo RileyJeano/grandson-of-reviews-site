@@ -59,7 +59,7 @@ public class ReviewPopulator implements CommandLineRunner {
 		reviewKid5 = reviewRepo.save(reviewKid5);
 		reviewKid6 = reviewRepo.save(reviewKid6);
 
-		// Aracde
+		// Arcade
 		Review reviewKid7 = new Review("Chell: Portal", "description", "recomendation", "rating", "image", category4);
 		reviewKid7 = reviewRepo.save(reviewKid7);
 

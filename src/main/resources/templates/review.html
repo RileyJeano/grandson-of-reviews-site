@@ -45,13 +45,7 @@
 		<label >Add a Tag: <input class="taggyTag"type="text" name="tagName"/></label>
 		<button class="tagSubmit">Submit</button>
 	</p>
-	
-	<ul>
-		<li th:each="tag : ${review.tags}">
-		
-			<h2 th:text="${tag.tagName}"></h2>
-		</li>
-	</ul>
+	<p>Tags:</p>
 	
 	<script src="/js/app.js"></script>
 	</main>
