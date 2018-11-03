@@ -7,9 +7,9 @@
 	<link rel="stylesheet" type="text/css" href="/css/layout.css">
 </head>
 		<header>
+		
 			<h1 th:text="|${tag.tagName}|">Tag</h1>
 		</header>
-
 		<ul>
 			<li th:each="review : ${tag.reviews}" th:text="${review.reviewName}">
 			</li>

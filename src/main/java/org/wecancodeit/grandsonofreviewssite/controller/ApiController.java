@@ -39,10 +39,20 @@ public class ApiController {
 		System.out.println(tagName);
 		System.out.println(id);
 		Review review = reviewRepo.findById(id).get();
-		Tag tag = new Tag(tagName, review);
-		review.addTag(tag);
-		tagRepo.save(tag);
-		System.out.println(review.getTags());
+		if (tagRepo.findByTagName(tagName) == null) {
+			Tag tag = new Tag(tagName, review);
+			review.addTag(tag);
+			tagRepo.save(tag);
+			System.out.println(review.getTags());
+		}
+
+		else {
+			Tag tag = tagRepo.findByTagName(tagName);
+			tag.addReview(review);
+			review.addTag(tag);
+			tagRepo.save(tag);
+			System.out.println("Hitthing this " + tag.getReviews());
+		}
 
 		return review.getTags();
 	}

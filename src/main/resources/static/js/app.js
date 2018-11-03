@@ -27,17 +27,17 @@ addTagButton.addEventListener('click', () => {
 })
 
 
-// fetch(`/api/reviews/${window.location.pathname.split('/')[2]}`, {
-// 				method: 'get'
-// 			})
-// 			.then(res => res.json())
-// 			.then(data => {
-// 				data.forEach(tag =>{
-// 					p.innerHTML = `
-// 						<span>${tag.tagName}</span> 
-// 					` + p.innerHTML; 
-// 				})
-// 			})
+ fetch(`/api/reviews/${window.location.pathname.split('/')[2]}`, {
+ 				method: 'get'
+ 			})
+ 			.then(res => res.json())
+ 			.then(data => {
+ 				data.forEach(tag =>{
+ 					p.innerHTML = `
+ 						<a href = "/tag/${tag.id}">${tag.tagName}</a>
+ 					` + p.innerHTML; 
+ 				})
+ 			})
 // Creates a new AJAX request
 
 
