@@ -1,14 +1,12 @@
 package org.wecancodeit.grandsonofreviewssite.model;
 
-import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -23,7 +21,7 @@ public class Tag {
 
 	@JsonIgnore
 	@ManyToMany
-	private Set<Review> reviews = new HashSet<>();
+	private Collection<Review> reviews = new HashSet<>();
 
 	public Tag() {
 	}
@@ -49,7 +47,7 @@ public class Tag {
 		reviews.add(review);
 	}
 
-	public Set<Review> getReviews() {
+	public Collection<Review> getReviews() {
 		return reviews;
 	}
 
