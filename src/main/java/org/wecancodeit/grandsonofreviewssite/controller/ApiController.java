@@ -56,4 +56,18 @@ public class ApiController {
 
 		return review.getTags();
 	}
+
+	@PostMapping("/api/review/{id}/tags/remove")
+	public void removeTag(@PathVariable(value = "id") Long id, @RequestBody String body) throws JSONException {
+		System.out.println(body);
+		JSONObject json = new JSONObject(body);
+		String tagName = json.getString("tagName");
+		Review review = reviewRepo.findById(id).get();
+		Tag tag = tagRepo.findByTagName(tagName);
+		if (tag != null) {
+			review.removeTag(tag);
+			tag.removeReview(review);
+			reviewRepo.save(review);
+		}
+	}
 }

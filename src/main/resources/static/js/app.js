@@ -14,14 +14,25 @@ addTagButton.addEventListener('click', () => {
 			p.innerHTML = original;
 			JSON.parse(this.responseText).forEach(tag =>{
 				p.innerHTML = `
-					<a href = "/tag/${tag.id}">${tag.tagName}</a> 
+					<a href = "/tag/${tag.id}" class="a${tag.id}">${tag.tagName}</a> <button class="button${tag.id}">X</button>
 				` + p.innerHTML;
+				document.querySelector(`.button${tag.id}`).addEventListener('click', () => {
+ 						fetch(`/api/review/${window.location.pathname.split('/')[2]}/tags/remove`, {
+ 							method: 'POST',
+ 							body:	JSON.stringify({
+								tagName: tag.tagName
+ 							})
+ 						}).then(() => {
+ 							document.querySelector(`.a${tag.id}`).remove();
+ 							document.querySelector(`.button${tag.id}`).remove();
+ 						})
+ 					})
 			})
 		}
 	}
 	xhttp.open('POST', `/api/reviews/${window.location.pathname.split('/')[2]}/tags/add`, true)
 	const body = JSON.stringify({
-				tagName: input.value,
+				tagName: input.value
 			})
 	xhttp.send(body)
 })
@@ -34,10 +45,19 @@ addTagButton.addEventListener('click', () => {
  			.then(data => {
  				data.forEach(tag =>{
  					p.innerHTML = `
- 						<a href = "/tag/${tag.id}">${tag.tagName}</a>
+ 						<a href = "/tag/${tag.id}">${tag.tagName}</a> <button class="button${tag.id}">X</button>
  					` + p.innerHTML; 
+ 					document.querySelector(`.button${tag.id}`).addEventListener('click', () => {
+ 						fetch(`/api/review/${window.location.pathname.split('/')[2]}/tags/remove`, {
+ 							method: 'POST',
+ 							body:	JSON.stringify({
+								tagName: tag.tagName
+ 							})
+ 						}).then(() => {
+ 							document.querySelector(`.a${tag.id}`).remove();
+ 							document.querySelector(`.button${tag.id}`).remove();
+ 						})
+ 					})
  				})
  			})
-// Creates a new AJAX request
-
 
