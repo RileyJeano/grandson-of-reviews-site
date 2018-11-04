@@ -45,7 +45,7 @@ addTagButton.addEventListener('click', () => {
  			.then(data => {
  				data.forEach(tag =>{
  					p.innerHTML = `
- 						<a href = "/tag/${tag.id}">${tag.tagName}</a> <button class="button${tag.id}">X</button>
+ 						<a href = "/tag/${tag.id}" class="a${tag.id}">${tag.tagName}</a> <button class="button${tag.id}">X</button>
  					` + p.innerHTML; 
  					document.querySelector(`.button${tag.id}`).addEventListener('click', () => {
  						fetch(`/api/review/${window.location.pathname.split('/')[2]}/tags/remove`, {
