@@ -28,10 +28,10 @@
 		</div>
 		
 		<form th:action="|/reviews/${review.id}|" method="post">
-		<label>Username: <input type="text" name="username" /></label>
-		<textarea name="content" placeholder="Leave a comment"></textarea>
-		<input type="submit" value="Submit" />
-	</form>
+			<label>Username: <input type="text" name="username" /></label>
+			<textarea name="content" placeholder="Leave a comment"></textarea>
+			<input type="submit" value="Submit" />
+		</form>
 
 	<ul>
 		<li th:each="comment : ${review.comments}">
@@ -42,11 +42,11 @@
 	</ul>
 
 	<p class="tags">
-		<label >Add a Tag: <input class="taggyTag"type="text" name="tagName"/></label>
+		<label >Add a Tag: <input class="taggyTag" type="text" name="tagName"/></label>
 	</p>
 		<button class="tagSubmit">Submit</button>
 	<p>Tags:</p>
-	
+	<script src="/js/dom.js"></script>
 	<script src="/js/app.js"></script>
 	</main>
 
