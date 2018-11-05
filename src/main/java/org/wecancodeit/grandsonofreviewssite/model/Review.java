@@ -2,6 +2,7 @@ package org.wecancodeit.grandsonofreviewssite.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.Collection;
 
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Review {
 	private Category category;
 
 	@ManyToMany
-	private Collection<Tag> tags;
+	private Set<Tag> tags;
 
 	@OneToMany(mappedBy = "review")
 	private Collection<Comment> comments;
@@ -42,7 +43,7 @@ public class Review {
 	}
 
 	public Review(String reviewName, String reviewDescription, String recomendation, String reviewRating,
-			String reviewImage, Category category, List<Tag> tags) {
+			String reviewImage, Category category, Set<Tag> tags) {
 		this.reviewName = reviewName;
 		this.reviewDescription = reviewDescription;
 		this.recomendation = recomendation;
@@ -94,7 +95,7 @@ public class Review {
 		tags.add(tag);
 	}
 
-	public Collection<Tag> getTags() {
+	public Set<Tag> getTags() {
 		return tags;
 	}
 

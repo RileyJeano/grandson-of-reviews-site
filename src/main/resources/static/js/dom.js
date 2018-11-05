@@ -1,32 +1,24 @@
 
 
-function addtag(input, reviewId) {
-	addTagButton.addEventListener('click', (input, reviewId) => {
+function addTag(input, reviewId, addTagButton, p, original) {
+	
+	addTagButton.addEventListener('click', function() {
+		
 		const xhttp = new XMLHttpRequest()
+		
 		// Sets behavior for when the AJAX request is complete
-		console.log(xhttp);
 		xhttp.onreadystatechange = function() {
+			
 			// Checks the ready state and http status code
 			if (this.readyState == 4 && this.status == 200) {
-				// Typical action to be performed when the document is ready:
-				console.log(JSON.parse(this.responseText))
+				
+				//Resets the original p element
 				p.innerHTML = original;
-				JSON.parse(this.responseText).forEach(tag =>{
-					p.innerHTML = p.innerHTML + `
-						<a href = "/tag/${tag.id}" class="a${tag.id}">${tag.tagName}</a> <button class="button${tag.id}">X</button>
-					`;
-					document.querySelector(`.button${tag.id}`).addEventListener('click', () => {
-	 						fetch(`/api/review/${reviewId}/tags/remove`, {
-	 							method: 'POST',
-	 							body:	JSON.stringify({
-									tagName: tag.tagName
-	 							})
-	 						}).then(() => {
-	 							document.querySelector(`.a${tag.id}`).remove();
-	 							document.querySelector(`.button${tag.id}`).remove();
-	 						})
-	 					})
+
+				JSON.parse(this.responseText).forEach(tag => {
+					addTagHtml(tag, p, reviewId)
 				})
+				addDeleteButtonsEvent(p, reviewId)
 			}
 		}
 		xhttp.open('POST', `/api/reviews/${window.location.pathname.split('/')[2]}/tags/add`, true)
@@ -35,4 +27,34 @@ function addtag(input, reviewId) {
 				})
 		xhttp.send(body)
 	})
+}
+
+function addTagHtml(tag, p) {
+
+	p.innerHTML = p.innerHTML + `
+		<a href = "/tag/${tag.id}" class="a${tag.id}">${tag.tagName}</a> <button class="delete" data-num="${tag.id}">X</button>
+	`;
+}
+
+function addDeleteButtonsEvent(p, reviewid) {
+	console.log(p.querySelectorAll('.delete'))
+	p.querySelectorAll('.delete').forEach(button => {
+		button.addEventListener('click', () => {
+			const a = p.querySelector(`.a${button.getAttribute('data-num')}`)
+			fetch(`/api/review/${reviewId}/tags/remove`, {
+
+				method: 'POST',
+				body:	JSON.stringify({
+					tagName: a.innerText
+				})
+			}).then(() => {
+				a.remove();
+				button.remove();
+			})
+		})
+	})
+}
+module.exports = {
+	addTag,
+	addTagHtml
 }

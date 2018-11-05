@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,7 @@ import org.wecancodeit.grandsonofreviewssite.model.Tag;
 import org.wecancodeit.grandsonofreviewssite.repository.ReviewRepository;
 import org.wecancodeit.grandsonofreviewssite.repository.TagRepository;
 
+@CrossOrigin
 @RestController
 public class ApiController {
 
@@ -28,22 +30,21 @@ public class ApiController {
 	// get rid of fancy stuff
 	@GetMapping("/api/reviews/{id}")
 	public Collection<Tag> getTagsForReview(@PathVariable(value = "id") Long id) {
+		System.out.println(id);
+		System.out.println(reviewRepo.findById(id).get().getTags());
 		return reviewRepo.findById(id).get().getTags();
 	}
 
 	@PostMapping("/api/reviews/{id}/tags/add")
 	public Collection<Tag> addTag(@PathVariable(value = "id") Long id, @RequestBody String body) throws JSONException {
-		System.out.println(body);
 		JSONObject json = new JSONObject(body);
 		String tagName = json.getString("tagName");
-		System.out.println(tagName);
-		System.out.println(id);
 		Review review = reviewRepo.findById(id).get();
 		if (tagRepo.findByTagName(tagName) == null) {
 			Tag tag = new Tag(tagName, review);
 			review.addTag(tag);
 			tagRepo.save(tag);
-			System.out.println(review.getTags());
+			System.out.println("making a new tag");
 		}
 
 		else {
@@ -51,7 +52,7 @@ public class ApiController {
 			tag.addReview(review);
 			review.addTag(tag);
 			tagRepo.save(tag);
-			System.out.println("Hitthing this " + tag.getReviews());
+			System.out.println("Saving existing tag to review");
 		}
 
 		return review.getTags();
