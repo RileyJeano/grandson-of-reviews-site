@@ -21,7 +21,7 @@ public class Tag {
 
 	@JsonIgnore
 	@ManyToMany
-	private Collection<Review> reviews = new HashSet<>();
+	private Set<Review> reviews = new HashSet<>();
 
 	public Tag() {
 	}
@@ -47,7 +47,7 @@ public class Tag {
 		reviews.add(review);
 	}
 
-	public Collection<Review> getReviews() {
+	public Set<Review> getReviews() {
 		return reviews;
 	}
 

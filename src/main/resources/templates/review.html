@@ -39,7 +39,7 @@
 		<li th:each="comment : ${review.comments}">
 		
 			<h2 th:text="${comment.username}"></h2>
-			<h3 th:text="${comment.content}"></h3>
+			<p th:text="${comment.content}"></p>
 		</li>
 	</ul>
 </div>
